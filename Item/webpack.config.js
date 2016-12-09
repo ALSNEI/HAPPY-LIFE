@@ -8,6 +8,7 @@ var path = __dirname + "/app";
 module.exports = {
 	entry:{
 		login:path+"/login/login.js",
+        zajin:path+"/zajin/zajin.js"
 	},
 	output:{
 		path:"./www",
@@ -63,6 +64,12 @@ module.exports = {
         template: './app/login/index.html',
         chunks: ['common','login']
     }),
+    new HtmlWebpackPlugin({
+        title: '会员杂锦',
+        filename: 'zajin.html',
+        template: './app/zajin/zajin.html',
+        chunks: ['common','zajin']
+    }),
     new webpack.ProvidePlugin({
      $: path+'/commons/jquery-3.0.0.min.js',
     })//直接加载到全局不需要require()
@@ -74,3 +81,4 @@ module.exports = {
 // sudo cnpm install url-loader file-loader
 
 
+//webpack-dev-server
