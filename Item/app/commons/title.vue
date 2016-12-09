@@ -41,12 +41,10 @@ export default {
 	left: 5%;
 	top: calc(50% - .1rem);
 	padding: 0;
-	/*line-height: 150%;*/
 }
 .header a:nth-child(3){
 	right: 5%;
 	top: calc(50% - .13rem);
 	padding: 0;
-	/*line-height: 150%;*/
 }
 </style>
