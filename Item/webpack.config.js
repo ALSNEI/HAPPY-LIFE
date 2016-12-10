@@ -8,6 +8,9 @@ var path = __dirname + "/app";
 module.exports = {
 	entry:{
 		login:path+"/login/login.js",
+        register:path+"/register/register.js",
+        forget:path+"/forget/forget.js",
+        Appcon:path+"/Appcon/Appcon.js",
         zajin:path+"/zajin/zajin.js"
 	},
 	output:{
@@ -63,6 +66,24 @@ module.exports = {
         filename: 'login.html',
         template: './app/login/index.html',
         chunks: ['common','login']
+    }),
+    new HtmlWebpackPlugin({
+        title: '注册',
+        filename: 'register.html',
+        template: path+'/register/index.html',
+        chunks: ['common','register']
+    }),
+    new HtmlWebpackPlugin({
+        title: '忘记密码',
+        filename: 'forget.html',
+        template: path+'/forget/index.html',
+        chunks: ['common','forget']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'Appcon',
+        filename: 'Appcon.html',
+        template: path+'/Appcon/index.html',
+        chunks: ['common','Appcon']
     }),
     new HtmlWebpackPlugin({
         title: '会员杂锦',

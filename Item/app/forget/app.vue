@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <title title="注册"></title> 
-    <register btn="注册"></register>
+    <title title="忘记密码"></title> 
+    <register btn="确认"></register>
   </div>
 </template>
 
