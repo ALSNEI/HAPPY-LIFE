@@ -1,7 +1,15 @@
 <template>
   <div id="app">
     <div id="home" class=" mui-control-content mui-active">	
-    	<title title="生活一家"></title>
+    	<title title="生活一家" right="编辑"></title>
+    	<ul class="Cooder">
+    		<li>当前位置</li>
+    		<li>省市列表</li>
+    		<li>上海市</li>
+    		<li>上海郊区</li>
+    		<li>江苏</li>
+    		<li>浙江</li>
+    	</ul>
 		<div class="swiper-container">
 	        <div class="swiper-wrapper">
 	            <div class="swiper-slide"><img src="img/homeS1.jpg"/></div>
@@ -64,13 +72,50 @@
 			</div><!-- con -->
 		</div><!-- content -->
     </div>
-    <div id="clasify" class=" mui-control-content">	
+    <div id="clasify" class=" mui-control-content">
     	<title title="分类"></title>
+
     </div>
-    <div id="shop" class=" mui-control-content">	
+    <div id="shop" class=" mui-control-content">
     	<title title="购物车"></title>
+
     </div>
-    <div id="person" class=" mui-control-content">	
+    <div id="person" class=" mui-control-content">	  <div class="wrap">  
+	      <div class="content">
+	        <div class="lun">
+	          <img src="img/3.jpg"/>
+	        </div>
+	        <div class="middle">
+	          <img src="img/1.jpg" class="peop">
+	          
+	        </div>
+	        <div class="Dia">
+	          <img src="img/diamon.png" class="diamon">
+	        </div>
+	        <div class="Name">
+	          <p class="Name_co">凯丽_Keylie</p>
+	          <input type="text" value="VIP会员" class="Vip">
+	        </div>
+	        
+	      </div>
+	      <div class="inner">
+	        <ul>
+	          <li class="first"><a href=""><img src="img/icon1.jpg"></a><a href="">基本资料</a><a href="" class="arrow">></a></li>
+	          <li><a href=""><img src="img/icon2.jpg"></a><a href="">我的订单</a><a href="" class="arrow">></a></li>
+	          <li><a href=""><img src="img/icon3.jpg"></a><a href="">我的收藏</a><a href="" class="arrow">></a></li>
+	          <li><a href=""><img src="img/icon4.jpg"></a><a href="">我的钱包</a><a href="" class="arrow">></a></li>
+	          <li><a href=""><img src="img/icon5.jpg"></a><a href="">收货地址</a><a href="" class="arrow">></a></li>
+	          <li><a href=""><img src="img/icon6.jpg"></a><a href="">升级会员</a><a href="" class="arrow">></a></li>
+	        </ul>
+	        <ul>
+	              <li class="more"><a href=""><img src="img/icon7.jpg"></a><a href="">更多</a><a href="" class="arrow">></a></li>
+	              <li><a href=""><img src="img/icon7.jpg"></a><a href="">注销</a><a href="" class="arrow">></a></li>
+
+	        </ul>
+	        
+	       
+	      </div>
+	    </div>
     </div>
 <!--       底部table切换       -->
     <nav class="mui-bar mui-bar-tab">
@@ -128,7 +173,68 @@ export default {
   	}
   },
   ready:function () {//生命周期问题
-  	/***********   底部table切换   ************/
+/***********  首页定位样式切换  ************/
+  	var $h1 = $("#home .header h1");
+  	var $changeC = $("#home .header .changeC");
+  	var $city = $("#home .header .city");
+  	var $search = $("#home .header .mui-action-search");
+  	var $back = $("#home .header .mui-action-back");
+  	var $location = $("#home .header .location");
+  	var $Cooder = $("#home .Cooder");
+  	$location.on("click",function(){
+  		// console.log($(this))
+  		$Cooder.slideDown();
+  		$h1.css("display","none");
+  		$search.css("display","none");
+  		$location.css("display","none");
+  		$city.css("display","block");
+  		$back.css("display","block");
+  	})
+  	$back.on("click",function(){
+  		Yin();
+  	})
+  	/*首页顶部的样式改变函数*/
+  	function Yin(){
+  		$Cooder.slideUp();
+  		$h1.css("display","block");
+  		$search.css("display","block");
+  		$location.css("display","block");
+  		$city.css("display","none");
+  		$back.css("display","none");
+  	} 
+  	var $liList = $("#home .Cooder li");
+  	$liList.each(function(i){
+	  	$(this).on("click",function(){
+  			if($(this).index()>1){
+				$changeC.html($(this).html());
+	  			Yin();
+	  		}
+	  		/*IP定位*/ 
+	  		if($(this).index()==0){
+	  			showCityInfo();
+	  			Yin();
+	  		}
+  		})
+  	})
+  	// 创建空的map对象
+  	var map = new AMap.Map("container", {});
+  	//IP定位函数(获取用户所在城市信息)
+    function showCityInfo() {
+        //实例化城市查询类
+        var citysearch = new AMap.CitySearch();
+        //自动获取用户IP，返回当前城市
+        citysearch.getLocalCity(function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+                if (result && result.city && result.bounds) {
+                    var cityinfo = result.city;
+                    $changeC.html(cityinfo);
+                }
+            } else {
+            	alert("定位失败,请重试");
+            }
+        });
+    }
+/***********   底部table切换   ************/
 	var $navs = $("nav a");//这里使用 jq 定义变量必须加 var
 	var $controlContent  = $(".mui-control-content");//这里使用 jq 定义变量必须加 var
 	// console.log($navs[0])
@@ -160,6 +266,8 @@ export default {
 	   		}
 	   		$navN = $(this).index();
 	   		bol= false;
+	   		// 在选择地址时,table切换,让首页样式还原
+	   		Yin();
 	   })
 	 });
 	if(bol){
@@ -203,12 +311,12 @@ export default {
 /*第四个*/
 #shop{display: none;}
 #shop .header a{display: none;}
-#shop .header .location,.header .mui-icon-search{
+#shop .header .location,#shop .header .mui-icon-search{
 	display: none;
 }
-#shop .header .type{
+#shop .header .mui-pull-right{
 	display: block;
-    top: calc(50% - .1rem);
+	top: calc(50% - .1rem);
     font-size: .35rem;
 }
 /*第五个*/
@@ -217,7 +325,9 @@ export default {
 #person .header .location,.header .mui-icon-search{
 	display: none;
 }
-/**********************   首页   **********************/
+
+/********************  首页  *********************/
+
 #home{padding-top: .85rem;}
 #home .swiper-container .swiper-slide img{width: 100%;}
 #home .content{margin: .2rem .2rem 1.2rem;}
@@ -254,7 +364,25 @@ export default {
 	font-size: .3rem;
 	position: relative;
 }
-/*********************  会员杂锦  *********************/
+
+/*定位*/
+#home .Cooder{
+	display: none;
+	width: 100%;
+	background-color: #e6e6e6;
+	position: absolute;
+	z-index: 3333
+}
+#home .Cooder li{
+	background-color: #f2f2f2;
+	font-size: .3rem;
+	padding: .25rem;
+}
+#home .Cooder li:nth-child(2){
+	background-color: #e6e6e6;
+}
+/******************  会员杂锦  *******************/
+
 #zajin{padding: .85rem 0rem 1rem;}
 #zajin .header{ width: 100%; height: .85rem; position: fixed; top: 0; z-index: 1; }
 #zajin .header .mui-icon:nth-child(1){ display: none; }
@@ -300,7 +428,107 @@ export default {
 #zajin .swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:.1rem;}
 #zajin .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{ margin: 0 .1rem; }
 
-/***********   底部table切换   ************/
+/**************  我的  *****************/
+#person .wrap {
+  width: 100%;
+  position: relative;
+ /* margin-bottom: 1rem;*/
+}
+#person .content { width: 100%; position: relative }
+#person .lun{ width: 100%; height: 4.5rem;position: relative;}
+
+#person .content .lun img {
+  width: 100%;
+  height:4.5rem;
+}
+#person .content .middle {
+  width: 1.56rem;
+  height:1.56rem;
+  overflow: hidden;
+  border: 2px solid #fff; 
+  border-radius:50%;
+  position: absolute;
+  top: 1.3rem;left:0;right: 0;bottom: 2rem;
+  margin: auto;                                                                                                             
+}
+#person .content .middle .peop {
+  width: 100%;
+  background:rgba(255,255,255,.5);
+}
+#person .content .Dia {
+  height:.30rem;
+  width: .40rem;
+  position: absolute;
+  left:3.95rem;
+  top:2.3rem;
+}
+#person .content .Dia img { 
+  width: 100%;
+}
+#person .content .Name {
+  width:1.56rem;
+  
+  position: absolute;
+  top:2.9rem;left:0;right:0;bottom: 0.8rem;
+  margin: auto;
+}
+#person .content .Name .Name_co {
+ font-size: .25rem;
+  color: white;
+  margin-bottom: 0.2rem;
+  text-align:center;
+}
+#person .content .Name .Vip {
+  width: 1.56rem;
+  height: .42rem;
+  color: white;
+  font-size: .25rem;
+  line-height: .42rem;
+  padding: 0;
+  border-radius:.2rem;
+  background:rgba(255,255,255,0.3);
+  text-align: center;
+}
+#person .inner {
+  width: 7.50rem;
+  height:7.77rem;
+  margin-top: .14rem;
+
+  border-top: 1px solid #dbdbdb;
+  background: #f2f2f2;
+  
+}
+#person .inner ul {
+  background: white;
+  padding-left: .38rem;
+}
+#person .inner ul li {
+  font-size:.28rem;
+  line-height:.92rem;
+  background: white;
+
+  border-bottom:1px solid #f2f2f2;
+
+
+
+}
+#person .inner ul li a {
+  color: black;
+}
+#person .inner ul li .arrow {
+  font-size: .32rem;
+  margin-right:.2rem;
+  float: right;
+  color: #b3b3b3;
+}
+#person .inner ul .more {
+  margin-top:.22rem;
+}
+#person .inner ul li img {
+  width: .4rem;
+  margin:0 .40rem 0 0;
+}
+/**************   底部table切换   ***************/
 .mui-bar-tab .mui-tab-item .home{
 	font-family: Muiicons;
 	font-weight: normal;

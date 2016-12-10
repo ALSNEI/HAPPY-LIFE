@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <title title="登陆"></title> 
+    <title title="登陆" Right='注册'></title> 
     <div class="wrap">  
       <div class="content">
         <div class="lun">
@@ -42,6 +42,7 @@ export default {
   font-size: 0.25rem;
   color: #f2bf8f;
 }
+.con a{color:#F29004;}
 .con .conone{
   background: white;
   border-radius: 10px;

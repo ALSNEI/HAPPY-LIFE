@@ -1,17 +1,17 @@
 <template>
-	<div class="title header mui-bar mui-bar-nav">
+	<div class="header mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon">&lt;</a>
 		<h1 class="mui-title">{{ title }}</h1>
-		<a class="mui-icon mui-pull-right">注册</a>
-		<a class="type mui-icon mui-pull-right">编辑</a>	
-		<a class="location mui-icon">广州 <span class="mui-icon mui-icon-arrowdown"></span></a>
-		<a class="mui-icon mui-icon-search"></a>	
+		<h1 class="mui-title city">选择城市</h1>
+		<a class="mui-icon mui-pull-right">{{Right}}</a>
+		<a class="location mui-icon"><span class="changeC">广州市</span> <span class="mui-icon mui-icon-arrowdown"></span></a>
+		<a class="mui-icon mui-icon-search"></a>
 	</div>
 </template>
 
 <script>
 export default {
-  props: ['title'],
+  props: ['title','Right'],
 }
 </script>
 
@@ -40,6 +40,9 @@ export default {
 	position: absolute;
 	top: 0;
 }
+.header .city{
+	display: none;
+}
 .header a:nth-child(1){
 	left: 5%;
 	top: calc(50% - .1rem);
@@ -49,6 +52,12 @@ export default {
 .header a:nth-child(3){
 	right: 5%;
 	top: calc(50% - .13rem);
+	padding: 0;
+}
+.header .mui-action-back{font-size: .4rem}
+.header .mui-pull-right{
+	right: 5%;
+	top: calc(50% - .1rem);
 	padding: 0;
 }
 .header .type{
@@ -67,7 +76,7 @@ export default {
 	vertical-align: sub;
 	display: none;
 }
-.header .location span{
+.header .location .mui-icon-arrowdown{
 	font-size: .48rem;
 	padding: 0 .1rem;
 }
