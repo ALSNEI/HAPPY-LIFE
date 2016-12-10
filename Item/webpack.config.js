@@ -8,10 +8,15 @@ var path = __dirname + "/app";
 module.exports = {
 	entry:{
 		login:path+"/login/login.js",
+<<<<<<< Updated upstream
         register:path+"/register/register.js",
         forget:path+"/forget/forget.js",
         Appcon:path+"/Appcon/Appcon.js",
         zajin:path+"/zajin/zajin.js"
+=======
+        zajin:path+"/zajin/zajin.js",
+        cart:path+"/cart/cart.js",
+>>>>>>> Stashed changes
 	},
 	output:{
 		path:"./www",
@@ -60,6 +65,7 @@ module.exports = {
         title: 'load',
         filename: 'load.html',
         template: './app/load/index.html',
+        chunks: ['']
     }),
     new HtmlWebpackPlugin({
         title: '登陆',
@@ -90,6 +96,12 @@ module.exports = {
         filename: 'zajin.html',
         template: './app/zajin/zajin.html',
         chunks: ['common','zajin']
+    }),
+    new HtmlWebpackPlugin({
+        title: '购物车',
+        filename: 'cart.html',
+        template: './app/cart/index.html',
+        chunks: ['common','cart']
     }),
     new webpack.ProvidePlugin({
      $: path+'/commons/jquery-3.0.0.min.js',
