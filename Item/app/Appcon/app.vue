@@ -292,24 +292,33 @@ export default {
         {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋3",money:29.5,a:"1合6片",bol:true},
       ],
       // 购物车
-      abc:function(){
+      abc:function(){   //小勾选
         var total = 0;
         var len = 0;
-        for (var i=0;i < this.Shoparr.length ; i++) {
-            if (this.Shoparr[i].bol==false) {
-              total += this.Shoparr[i].money; 
-              len += 1; 
-            }
+        this.truelen=0;
+        for (var i=0;i<this.Shoparr.length;i++) {
+          if (this.Shoparr[i].bol==false) { //算钱
+            total += this.Shoparr[i].money; 
+            len += 1; 
+          }       
+          if (this.Shoparr[i].bol) {  //小勾选
+               $(".gou").eq(i).children()[0].src=require("./img/gou2.png"); 
+           }else {
+               $(".gou").eq(i).children()[0].src=require("./img/gou.png"); 
+               this.truelen++;//记录勾选了多少个
+          }
         }
+        this.ABC();
         $(".heji span").eq(1).html("￥"+total)
         $(".jisuan span").eq(0).html("（"+len+"）")
-
-        for (var i=0;i<this.Shoparr.length;i++) {
-          if (this.Shoparr[i].bol) {
-               $(".gou").eq(i).children()[0].src=require("./img/gou2.png");        
-           }else {
-               $(".gou").eq(i).children()[0].src=require("./img/gou.png");   
-          }
+        console.log(this.truelen);
+     },
+     truelen:0,
+     ABC:function(){     //全选按钮   
+        if (this.truelen==this.Shoparr.length) {
+           $(".gouquan").eq(0).children()[0].src=require("./img/gou.png");
+        }else {
+           $(".gouquan").eq(0).children()[0].src=require("./img/gou2.png");
         }
      },
      Clasifyarr:[
@@ -346,10 +355,10 @@ export default {
 // 方法
 
   // 购物车
-  methods:{
+  methods:{ //标签可调用函数写这里
     spot:function(index){
-        this.Shoparr[index].bol = !this.Shoparr[index].bol 
-        this.abc()
+        this.Shoparr[index].bol = !this.Shoparr[index].bol //根据布尔值决定是否选中
+        this.abc();//小勾选
     }
   },
 
@@ -446,24 +455,14 @@ export default {
 
 /**************   购物车   ***************/
 
-	this.abc();
-    var quan = true;
-    var _arr = this;
-    $(".gouquan").eq(0).on("touchstart",function(){
-        quan = !quan      
-         console.log(); 
-        if (quan) {
-           $(".gouquan").eq(0).children()[0].src=require("./img/gou2.png");
-           for (var i=0;i<  _arr.Shoparr.length;i++) {
-             _arr.Shoparr[i].bol = true;
-           }
-        }else {
-          $(".gouquan").eq(0).children()[0].src=require("./img/gou.png");
-           for (var i=0;i<  _arr.Shoparr.length;i++) {
-             _arr.Shoparr[i].bol = false;
-           }
-        }
-        _arr.abc()
+    this.abc()//开始的时候选了那些商品
+    var _arr = this; //保存this
+    $(".gouquan").eq(0).on("touchstart",function(){//点击全选
+        for (var i=0;i<  _arr.Shoparr.length;i++) {//改变所有的布尔值为选中
+           _arr.Shoparr[i].bol = false;
+         }
+         _arr.abc();//选了多少个
+         _arr.ABC();//是否触发全选按钮
     })
 /***********   分类   ************/  
 
