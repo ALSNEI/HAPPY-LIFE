@@ -3,6 +3,7 @@
 		<a class="mui-action-back mui-icon">&lt;</a>
 		<h1 class="mui-title">{{ title }}</h1>
 		<h1 class="mui-title city">选择城市</h1>
+		<h1 class="mui-title searchT">搜索</h1>
 		<a class="mui-icon mui-pull-right">{{Right}}</a>
 		<a class="location mui-icon"><span class="changeC">广州市</span> <span class="mui-icon mui-icon-arrowdown"></span></a>
 		<a class="mui-icon mui-icon-search"></a>
@@ -43,6 +44,7 @@ export default {
 .header .city{
 	display: none;
 }
+.header .searchT{display: none;}
 .header a:nth-child(1){
 	left: 5%;
 	top: calc(50% - .1rem);

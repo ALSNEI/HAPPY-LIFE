@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<!--  1.home -->
     <div id="home" class=" mui-control-content mui-active">	
     	<title title="生活一家" right="编辑"></title>
     	<ul class="Cooder">
@@ -39,12 +40,13 @@
 		    </div>
 		    <div class="Ad">
 		    	<div class="Ad1" v-for="obj in homeArr">
-					<img src="img/Ad1.jpg" alt="">
+					<img v-bind:src="obj.img" alt="">
 					<p>{{obj.p}}</p>
 		    	</div>
 		    </div>
 	    </div>
     </div>
+<!-- 2.zajin -->
 	<div id="zajin" class=" mui-control-content">	
     	<title title="会员杂锦"></title>
     	<div class="content">
@@ -62,7 +64,7 @@
 			<div class="con">
 				<a class="cona" href="###" v-for="obj in zajinArr" >
 				<div class="product">
-			  		<div class="products"><img src="img/hetao.jpg"></div>
+			  		<div class="products"><img v-bind:src="obj.img"></div>
 					<p>{{obj.p}}</p>
 					<span class="span1">{{obj.span1}}</span>
 					<span class="span2">原价:<span style="text-decoration:line-through">{{obj.span2}}</span></span>
@@ -72,14 +74,50 @@
 			</div><!-- con -->
 		</div><!-- content -->
     </div>
+<!-- 3.classify -->
     <div id="clasify" class=" mui-control-content">
     	<title title="分类"></title>
-
     </div>
+<!-- 4.shop -->
     <div id="shop" class=" mui-control-content">
     	<title title="购物车"></title>
+		<div class="wrap">  
+	        <div class="goods"  v-for="obj in Shoparr" >
+	          <div class="goodss">
+	            <div class="gou" v-on:click="spot($index)">
+	               <img src="img/gou2.png" alt="">
+	            </div>
+	            <div class="goodsimg"><img v-bind:src="obj.img" alt=""></div>
+	          </div>
 
+	          <div class="defailed">
+	            <div>{{obj.name}}</div>
+	            <div>规格：{{obj.a}}</div>       
+	          </div>
+
+	          <div>
+	            <span style="color:#e76b6b">￥{{obj.money}}</span>
+	            <span style="float: right;">x 1</span>
+	          </div>
+
+	        </div>
+
+	    </div>
+
+	    <div class="suan">
+	       <div class="gou gouquan">
+	           <img src="img/gou2.png" alt="">
+	        </div>
+	        <div class="xuan">全选</div>
+	        <div class="heji">
+	          <span>合计：</span><span style="color: #ed601b"></span> 
+	          <p>(不含运费)</p>
+	        </div>
+	          <!-- <div class="jisuan">结算<span>（2）</span></div> -->
+	          <button class="jisuan">结算<span></span></button>
+	    </div>
     </div>
+<!-- 5.person -->
     <div id="person" class=" mui-control-content">	  <div class="wrap">  
 	      <div class="content">
 	        <div class="lun">
@@ -152,32 +190,76 @@ export default {
   },
   data(){
   	return{
+  		// home
   		homeArr:[
-  		{img:"img/Ad1.jpg",p:"【10月抢购预告】 荣耀乐檬大神爆款 惊爆价"},
-  		{img:"img/Ad2.jpg",p:"【劲爆开抢】 宝洁大礼包优惠前所未有"},
-  		{img:"img/Ad3.jpg",p:"【神价再现】 GOD PRICE 华丽上市"}
+  		{img:require("./img/Ad1.jpg"),p:"【10月抢购预告】 荣耀乐檬大神爆款 惊爆价"},
+  		{img:require("./img/Ad2.jpg"),p:"【劲爆开抢】 宝洁大礼包优惠前所未有"},
+  		{img:require("./img/Ad3.jpg"),p:"【神价再现】 GOD PRICE 华丽上市"}
   		],
+  		// zajin
   		zajinArr:[
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋1",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋2",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋3",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋4",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋5",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋6",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋7",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋8",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋9",span1:"￥29.5",span2:"￥42.5"},
-      	{img:"img/hetao.jpg",p:"坚果特产山核桃奶油味碧根果210gx2袋10",span1:"￥29.5",span2:"￥42.5"}
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋1",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋2",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋3",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋4",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋5",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋6",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋7",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋8",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋9",span1:"￥29.5",span2:"￥42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋10",span1:"￥29.5",span2:"￥42.5"}
       ],
+      // 购物车
+      Shoparr:[
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋",money:29.5,a:"1合6片",bol:true},
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋1",money:29.5,a:"1合6片",bol:false},
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋2",money:29.5,a:"1合6片",bol:false},
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋3",money:29.5,a:"1合6片",bol:true},
+         {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋",money:29.5,a:"1合6片",bol:true},
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋1",money:29.5,a:"1合6片",bol:true},
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋2",money:29.5,a:"1合6片",bol:true},
+        {img:require("./img/hetao.jpg"),name:"坚果特产山核桃奶油味碧根果210gx2袋3",money:29.5,a:"1合6片",bol:true},
+      ],
+      // 购物车
+      abc:function(){
+        var total = 0;
+        var len = 0;
+        for (var i=0;i < this.Shoparr.length ; i++) {
+            if (this.Shoparr[i].bol==false) {
+              total += this.Shoparr[i].money; 
+              len += 1; 
+            }
+        }
+        $(".heji span").eq(1).html("￥"+total)
+        $(".jisuan span").eq(0).html("（"+len+"）")
+
+        for (var i=0;i<this.Shoparr.length;i++) {
+          if (this.Shoparr[i].bol) {
+               $(".gou").eq(i).children()[0].src=require("./img/gou2.png");        
+           }else {
+               $(".gou").eq(i).children()[0].src=require("./img/gou.png");   
+          }
+        }
+
+
+     },     
   	}
+  },
+  // 购物车
+  methods:{
+    spot:function(index){
+        this.Shoparr[index].bol = !this.Shoparr[index].bol 
+        this.abc()
+    }
   },
   ready:function () {//生命周期问题
 /***********  首页定位样式切换  ************/
   	var $h1 = $("#home .header h1");
   	var $changeC = $("#home .header .changeC");
   	var $city = $("#home .header .city");
-  	var $search = $("#home .header .mui-action-search");
+  	var $searchT = $("#home .header .searchT");
+  	var $search = $("#home .header .mui-icon-search");
   	var $back = $("#home .header .mui-action-back");
   	var $location = $("#home .header .location");
   	var $Cooder = $("#home .Cooder");
@@ -192,27 +274,42 @@ export default {
   	})
   	$back.on("click",function(){
   		Yin();
+  		Xian();
+  	})
+  	$search.on("click",function(){
+  		Yin();
+  		$back.css("display","block");
+  		$h1.css("display","none");
+  		$search.css("display","none");
+  		$searchT.css("display","block");
+  		$location.css("display","none");
   	})
   	/*首页顶部的样式改变函数*/
   	function Yin(){
   		$Cooder.slideUp();
-  		$h1.css("display","block");
-  		$search.css("display","block");
-  		$location.css("display","block");
-  		$city.css("display","none");
+  		$h1.css("display","none");
+  		$search.css("display","none");
+  		$location.css("display","none");
   		$back.css("display","none");
   	} 
+  	function Xian(){
+  		$h1.eq(0).css("display","block");
+  		$search.css("display","block");
+  		$location.css("display","block");
+  	}
   	var $liList = $("#home .Cooder li");
   	$liList.each(function(i){
 	  	$(this).on("click",function(){
   			if($(this).index()>1){
 				$changeC.html($(this).html());
 	  			Yin();
+	  			Xian();
 	  		}
 	  		/*IP定位*/ 
 	  		if($(this).index()==0){
 	  			showCityInfo();
 	  			Yin();
+	  			Xian();
 	  		}
   		})
   	})
@@ -234,6 +331,26 @@ export default {
             }
         });
     }
+/**************   购物车   ***************/
+	this.abc();
+    var quan = true;
+    var _arr = this;
+    $(".gouquan").eq(0).on("touchstart",function(){
+        quan = !quan      
+         console.log(); 
+        if (quan) {
+           $(".gouquan").eq(0).children()[0].src=require("./img/gou2.png");
+           for (var i=0;i<  _arr.Shoparr.length;i++) {
+             _arr.Shoparr[i].bol = true;
+           }
+        }else {
+          $(".gouquan").eq(0).children()[0].src=require("./img/gou.png");
+           for (var i=0;i<  _arr.Shoparr.length;i++) {
+             _arr.Shoparr[i].bol = false;
+           }
+        }
+        _arr.abc()
+    })
 /***********   底部table切换   ************/
 	var $navs = $("nav a");//这里使用 jq 定义变量必须加 var
 	var $controlContent  = $(".mui-control-content");//这里使用 jq 定义变量必须加 var
@@ -268,6 +385,7 @@ export default {
 	   		bol= false;
 	   		// 在选择地址时,table切换,让首页样式还原
 	   		Yin();
+	   		Xian();
 	   })
 	 });
 	if(bol){
@@ -371,7 +489,7 @@ export default {
 	width: 100%;
 	background-color: #e6e6e6;
 	position: absolute;
-	z-index: 3333
+	z-index:2;
 }
 #home .Cooder li{
 	background-color: #f2f2f2;
@@ -427,7 +545,132 @@ export default {
 #zajin .swiper-pagination-bullet-active{background:#fff}
 #zajin .swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:.1rem;}
 #zajin .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{ margin: 0 .1rem; }
+/**************  购物车  *****************/
+#shop .header a{ display: none; }
+#shop .bottom{
+  background-color: orange;
+  width: 100%;
+  height: 1rem;
+  position: fixed;
+  bottom: 0;
+}
+#shop .wrap{
+  width: 100%;
+  /*height: 85%;*/
+  position: relative;
+  padding-top: .85rem;
+  background-color: #fff;
+  padding-bottom: 2rem;
+}
+#shop .suan{
+  width: 100%;
+  height: 0.95rem;
+  /*border: 1px solid #ddd;*/
+  font-size: 0.3rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 0;
+  left: 0;
+  margin: auto;
+  padding: 0 0.1rem;
+  background-color: #ddd;
+}
+#shop .suan img{
+  width: 100%;
+}
+#shop .suan .gou{
+  width: 0.35rem;
+  height: 0.35rem;
+}
+#shop .suan .xuan{
+  /*width: 0.6rem;*/
+  height: 0.35rem;
+  left: 7%;
+}
+#shop .suan .heji{
+  width: 3rem;
+  height: 0.8rem;
+  left: 25%;
+  /*top: 50%*/
+}
+#shop .suan .heji span{
+  display: inline-block;
+  position: absolute;
+  top: 0;
 
+}
+#shop .suan .heji span:nth-child(2){
+  left: 30%;
+  width: 2rem;
+  overflow: hidden;
+   text-overflow: ellipsis;  /*隐藏部分变成点点...*/
+}
+#shop .suan .heji p{
+  font-size: 0.2rem;
+  position: absolute;
+  bottom: 0;
+}
+#shop .suan .jisuan{
+  width: 2.5rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 0.7rem;
+  right: 2%;
+  background-color: #ee4147;
+  margin: auto;
+  color: #fff;
+  font-size: 0.32rem;
+  /*padding: 0 0.3rem 0 0.6rem;*/
+}
+#shop .suan div{
+ /* display: inline-block;
+  line-height: 300%;
+  height: 50px;*/
+  position: absolute;
+ /* left: 0;
+  right: 0;*/
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#shop .goods{
+  width: 100%;
+  padding: 0.3rem 0.3rem;
+  overflow: hidden;
+  margin: auto;
+  font-size: 0.3rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+#shop .goodss{
+  float: left;
+  width: 30%;
+}
+#shop .goods img{
+  width: 100%;
+}
+#shop .gou{
+  width: 0.35rem;
+  display: inline-block;
+}
+
+#shop .goodsimg{
+  width: 70%;
+  display: inline-block;
+}
+#shop .defailed{
+  width: 60%;
+  float: left;
+  line-height: 180%;
+}
+#shop .defailed div{
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  /*隐藏部分变成点点...*/
+}
 /**************  我的  *****************/
 #person .wrap {
   width: 100%;
@@ -453,6 +696,7 @@ export default {
 }
 #person .content .middle .peop {
   width: 100%;
+  transform: scale(1.3);
   background:rgba(255,255,255,.5);
 }
 #person .content .Dia {
