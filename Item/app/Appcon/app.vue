@@ -3,6 +3,7 @@
 <!--  1.home -->
     <div id="home" class=" mui-control-content mui-active">	
     	<title title="生活一家" right="编辑"></title>
+    	<!-- 定位界面 -->
     	<ul class="Cooder">
     		<li>当前位置</li>
     		<li>省市列表</li>
@@ -11,6 +12,18 @@
     		<li>江苏</li>
     		<li>浙江</li>
     	</ul>
+    	<!-- 搜索界面 -->
+    	<form class="searchPage">
+    		<div class="search-form-box">
+				<input type="text" class="searchBar">
+				<p class="searchBarIn">
+					<span class="mui-icon mui-icon-search searchBar-icon"></span>
+					<span class="searchText">输入关键词/商品名称</span>
+				</p>
+    		</div>
+			<p class="searchTitle">热门搜索</p>
+			<a href="###" class="hotsearch" v-for="obj in SearchArr">{{obj.p}}</a>
+    	</form>
 		<div class="swiper-container">
 	        <div class="swiper-wrapper">
 	            <div class="swiper-slide"><img src="img/homeS1.jpg"/></div>
@@ -77,10 +90,57 @@
 <!-- 3.classify -->
     <div id="clasify" class=" mui-control-content">
     	<title title="分类"></title>
+    	<div class="wrap">
+			<div class="content">
+				<div class="classy">
+					<ul class="classify">
+						<li class="classifyli">
+							生活食品<div class="daosanjiao"></div>
+							<ul class="classifyf">
+								<li class="classifylis" v-for="obj in Clasifyarr2">
+								{{obj.classcons}}
+								</li>
+							</ul>
+						</li>
+						<li class="classifyli">
+							价格从高到低<div class="daosanjiao"></div>
+							<ul class="classifys">
+								<li class="classifylis" v-for="obj in Clasifyarr3">
+								{{obj.sort}}
+								</li>
+							</ul>
+						</li>
+						<li class="classifyli">
+							销量优先<div class="daosanjiao"></div>
+							<ul class="classifyx">
+								<li class="classifylis" v-for="obj in Clasifyarr2">
+								<!-- {{obj.classcons}} -->
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				
+
+				<div class="con">
+					<a class="cona" href="###" v-for="obj in Clasifyarr" >
+					<div class="product">
+				  		<div class="products"><img v-bind:src="obj.img")></div>
+						<p>{{obj.p}}</p>
+						<span class="span1">￥{{obj.span1}}</span>
+						<span class="span2">原价:￥<span style="text-decoration:line-through">{{obj.span2}}</span></span>
+
+				  	</div>
+				  	</a>
+				  	
+				</div><!-- con -->
+				<div class="meng"></div>
+			</div><!-- content -->
+		</div><!-- wrap -->
     </div>
 <!-- 4.shop -->
     <div id="shop" class=" mui-control-content">
-    	<title title="购物车"></title>
+    	<title title="购物车" Right="编辑"></title>
 		<div class="wrap">  
 	        <div class="goods"  v-for="obj in Shoparr" >
 	          <div class="goodss">
@@ -196,6 +256,16 @@ export default {
   		{img:require("./img/Ad2.jpg"),p:"【劲爆开抢】 宝洁大礼包优惠前所未有"},
   		{img:require("./img/Ad3.jpg"),p:"【神价再现】 GOD PRICE 华丽上市"}
   		],
+  		SearchArr:[
+  		{p:"小挎包"},
+  		{p:"皮带"},
+  		{p:"双肩包"},
+  		{p:"皮带"},
+  		{p:"小挎包"},
+  		{p:"双肩包"},
+  		{p:"皮带"},
+  		{p:"小挎包"}
+  		],
   		// zajin
   		zajinArr:[
       	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋",span1:"￥29.5",span2:"￥42.5"},
@@ -241,11 +311,40 @@ export default {
                $(".gou").eq(i).children()[0].src=require("./img/gou.png");   
           }
         }
-
-
-     },     
+     },
+     Clasifyarr:[
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋1",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋2",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋3",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋4",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋5",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋6",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋7",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋8",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋9",span1:"29.5",span2:"42.5"},
+      	{img:require("./img/hetao.jpg"),p:"坚果特产山核桃奶油味碧根果210gx2袋10",span1:"29.5",span2:"42.5"}
+      ],
+      Clasifyarr2:[
+      	{classcons:"美食"},
+      	{classcons:"美酒"},
+      	{classcons:"家居"},
+      	{classcons:"百货"},
+      	{classcons:"家电"},
+      	{classcons:"汽车配件"},
+      	{classcons:"箱包"},
+      	{classcons:"珠宝"}
+      ],
+      Clasifyarr3:[
+      	{sort:"综合排序"},
+      	{sort:"价格从低到高"},
+      	{sort:"价格从高到低"}
+      ]    
   	}
   },
+
+// 方法
+
   // 购物车
   methods:{
     spot:function(index){
@@ -253,16 +352,26 @@ export default {
         this.abc()
     }
   },
+
+//ready函数 
+
   ready:function () {//生命周期问题
 /***********  首页定位样式切换  ************/
+
   	var $h1 = $("#home .header h1");
   	var $changeC = $("#home .header .changeC");
   	var $city = $("#home .header .city");
   	var $searchT = $("#home .header .searchT");
+  	var $searchPage =$("#home .searchPage");
+  	var $searchBar =$("#home .searchPage .search-form-box .searchBar")
+  	var $searchBarIn =$("#home .searchPage .search-form-box .searchBarIn")
   	var $search = $("#home .header .mui-icon-search");
   	var $back = $("#home .header .mui-action-back");
   	var $location = $("#home .header .location");
   	var $Cooder = $("#home .Cooder");
+  	// $searchBar.on("tap",function(){
+  	// 	$searchBarIn.css("display":"none")
+  	// })
   	$location.on("click",function(){
   		// console.log($(this))
   		$Cooder.slideDown();
@@ -275,10 +384,12 @@ export default {
   	$back.on("click",function(){
   		Yin();
   		Xian();
+  		$searchPage.slideUp();
   	})
   	$search.on("click",function(){
   		Yin();
   		$back.css("display","block");
+  		$searchPage.slideDown();
   		$h1.css("display","none");
   		$search.css("display","none");
   		$searchT.css("display","block");
@@ -291,6 +402,7 @@ export default {
   		$search.css("display","none");
   		$location.css("display","none");
   		$back.css("display","none");
+  		$searchPage.css("display","none");
   	} 
   	function Xian(){
   		$h1.eq(0).css("display","block");
@@ -331,7 +443,9 @@ export default {
             }
         });
     }
+
 /**************   购物车   ***************/
+
 	this.abc();
     var quan = true;
     var _arr = this;
@@ -351,12 +465,77 @@ export default {
         }
         _arr.abc()
     })
+/***********   分类   ************/  
+
+var classifyli = document.querySelectorAll(".classifyli");
+		// var classifyf = document.querySelectorAll(".classifyf");
+		var classifydiv = document.querySelectorAll(".classifyli div");
+		var meng = document.querySelector(".meng");
+		var index = 0;
+		var Cbol = true;
+		var Cbol1 = true;
+		// console.log(classifydiv)
+		// console.log(classifyf)
+
+		//分类
+		classifyli[0].onclick = function(){
+			$(".classifys").css("display","none");
+			Cbol1 = true;
+			for(var j = 0; j < classifyli.length; j++){
+				classifyli[j].style.color = "#666";
+			}
+			if (Cbol) {
+				$(".classifyf").slideDown();
+				Cbol = false;
+				// meng.style.display = "block";
+				$(".meng").fadeIn();
+			}
+			else{
+				$(".classifyf").slideUp();
+				Cbol = true;
+				// meng.style.display = "none";
+				$(".meng").fadeOut();
+			}
+			this.style.color = "#f29004";
+		}
+		// 排序
+		classifyli[1].onclick = function(){
+			// $(".classifyf").slideUp();
+			$(".classifyf").css("display","none");
+			Cbol = true;
+			for(var j = 0; j < classifyli.length; j++){
+				classifyli[j].style.color = "#666";
+			}
+			if (Cbol1) {
+				$(".classifys").slideDown();
+				Cbol1 = false;
+				// meng.style.display = "block";
+				$(".meng").fadeIn();
+			}
+			else{
+				$(".classifys").slideUp();
+				Cbol1 = true;
+				// meng.style.display = "none";
+				$(".meng").fadeOut();
+			}
+			this.style.color = "#f29004";
+		}
+		$(".meng").on("click",function(){
+			$(".classifyf").slideUp();
+			$(".classifys").slideUp();
+			$(".meng").fadeOut();
+			Cbol = true;
+			Cbol1 = true;
+			// console.log(1)
+		})
+
 /***********   底部table切换   ************/
+
 	var $navs = $("nav a");//这里使用 jq 定义变量必须加 var
 	var $controlContent  = $(".mui-control-content");//这里使用 jq 定义变量必须加 var
 	// console.log($navs[0])
 	var $navN=0;
-	var bol = true;
+	var Nbol = true;
 	$navs.each(function(i){
 	   $(this).on("click",function(){//利用同级查找可以减少使用for循环
 	   		// console.log($(this).index());
@@ -382,13 +561,13 @@ export default {
 					});
 	   		}
 	   		$navN = $(this).index();
-	   		bol= false;
+	   		Nbol= false;
 	   		// 在选择地址时,table切换,让首页样式还原
 	   		Yin();
 	   		Xian();
 	   })
 	 });
-	if(bol){
+	if(Nbol){
 		var swiper = new Swiper("#home .swiper-container",{
 	        pagination: '.swiper-pagination',
 	        autoplay: 1500,
@@ -499,6 +678,49 @@ export default {
 #home .Cooder li:nth-child(2){
 	background-color: #e6e6e6;
 }
+/*搜索*/
+#home .searchPage{
+	display: none;
+	position: absolute;
+	background-color: #e6e6e6;
+	z-index: 3;
+	height: calc(100vh - .85rem);
+}
+#home .search-form-box{
+	text-align: center;
+	margin-top: .2rem;
+	position: relative;
+}
+#home .searchPage .searchBar{
+	width: 7.1rem;
+	border-radius: 50px;
+	outline: none;
+}
+#home .searchPage .searchBarIn{
+	position: absolute;
+	text-align: right;
+	font-size: .3rem;
+	top: calc(50% - .37rem);
+    left: .5rem;
+}
+#home .searchPage .searchTitle{
+	text-align: center;
+	font-size: .3rem;
+	margin-bottom: .3rem;
+}
+#home .searchPage .hotsearch{
+	color: #aeaeae;
+	border:1px solid #e1e1e1;
+	border-radius: 50px;
+	text-align: center;
+	background-color: white;
+	width:1.44rem;
+	height: .52rem;
+	font-size: .3rem;
+	line-height: .53rem;
+	display: inline-block;
+	margin: 0rem .2rem .2rem;
+}
 /******************  会员杂锦  *******************/
 
 #zajin{padding: .85rem 0rem 1rem;}
@@ -545,7 +767,9 @@ export default {
 #zajin .swiper-pagination-bullet-active{background:#fff}
 #zajin .swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:.1rem;}
 #zajin .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{ margin: 0 .1rem; }
+
 /**************  购物车  *****************/
+
 #shop .header a{ display: none; }
 #shop .bottom{
   background-color: orange;
@@ -671,7 +895,49 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;  /*隐藏部分变成点点...*/
 }
+
+/**************  分类  *****************/
+#clasify {padding-top: .85rem}
+#clasify .content{ width: 100%; position: relative; overflow: hidden; padding-bottom:.88rem; }
+#clasify .bottom{ width: 100%; height: .98rem; position: fixed; bottom: 0; background-color: orange; z-index: 9; }
+/*.lun{ width: 400%; height: 3rem; background-color: lightblue; position: relative; }*/
+#clasify .con{ margin: .2rem; position: relative; /*bottom: .98rem;*/ overflow: hidden; }
+#clasify .con .cona{ display: inline-block; width: 3.48rem; height: 4.89rem; }
+#clasify .con .product{ width: 3.48rem; height: 4.89rem; float: left; background-color: white; margin-bottom: .15rem; overflow: hidden; position: relative;  }
+#clasify .con .cona:nth-child(2n-1){ margin-right: .14rem; }
+
+
+#clasify .products{ width: 3.48rem; height: 3.48rem; }
+#clasify .products img{ width: 100%; }
+#clasify .product p{ font-size: .3rem; color: #1a1a1a; width: 90%; padding: 5%; line-height: .34rem; }
+#clasify .span1{ font-size: .28rem; color: #de0000; position: absolute; bottom: 1%; left: 5%; }
+#clasify .span2{ font-size: .24rem; color: #8a8a8a; position: absolute; bottom: 1%; left: 35%; }
+
+#clasify .classy{ width: 100%; height: .84rem; border-bottom:1px solid #dbdbdb; background-color: #fff; line-height: .82rem; font-size: .3rem; color: #666; z-index: 8; }
+#clasify .content ul{ list-style: none; z-index: 8; float: left; }
+#clasify .classify{ position: relative; }
+#clasify .classifyli{ width: calc(100vw / 3); text-align: center; }
+#clasify .content li{ float: left; height: .84rem; }
+#clasify .classifyli ul{ display: none; }
+#clasify .classifyf{ width: 100vw; background-color: #fff; padding: .1rem; border-top: 2px solid #dbdbdb; position: absolute; top: .84rem; left: 0; }
+#clasify .classifyf li{ width: 1.32rem; height: .54rem; border-radius: .07rem; float: left;  border-radius: .2rem; background-color: #f2f2f2; margin: .15rem .25rem; line-height: .54rem; color: #333; }
+
+#clasify .classifys{ width: 100vw; background-color: #fff; padding: .1rem; border-top: 2px solid #dbdbdb; position: absolute; top: .84rem; left: 0; border:1px solid #ddd; }
+#clasify .classifys li{ width: 100vw; height: .64rem; line-height: .64rem; color: #333; border-bottom: 1px solid #ddd; text-align: left; padding-left: .2rem; }
+#clasify .classifys li:last-child{ border:none; }
+
+/*倒三角*/
+#clasify .classifyli div{ width: 0; height: 0; border-width: .12rem .12rem 0rem .12rem; border-color: #999 transparent; border-style: solid; position: absolute; top: .34rem; }
+#clasify .classifyli:nth-child(1) div{ left: 1.9rem; }
+#clasify .classifyli:nth-child(2) div{ left: 4.7rem; }
+#clasify .classifyli:nth-child(3) div{ left: 6.9rem; }
+
+#clasify .dsjactive{ background-color: #f29004; }
+
+#clasify .meng{ width: 100vw; height: 100vh; background:rgba(0,0,0,.7); display: none; z-index: 3; position: absolute; top: 0.85rem; }
+
 /**************  我的  *****************/
+
 #person .wrap {
   width: 100%;
   position: relative;
