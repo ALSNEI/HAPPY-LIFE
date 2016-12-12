@@ -8,15 +8,11 @@ var path = __dirname + "/app";
 module.exports = {
 	entry:{
 		login:path+"/login/login.js",
-<<<<<<< Updated upstream
         register:path+"/register/register.js",
         forget:path+"/forget/forget.js",
         Appcon:path+"/Appcon/Appcon.js",
-        zajin:path+"/zajin/zajin.js"
-=======
         zajin:path+"/zajin/zajin.js",
         cart:path+"/cart/cart.js",
->>>>>>> Stashed changes
 	},
 	output:{
 		path:"./www",
