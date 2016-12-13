@@ -15,12 +15,12 @@
     	<!-- 搜索界面 -->
     	<form class="searchPage">
     		<div class="search-form-box">
-				<input type="text" class="searchBar">
-				<p class="searchBarIn">
-					<span class="mui-icon mui-icon-search searchBar-icon"></span>
-					<span class="searchText">输入关键词/商品名称</span>
-				</p>
-    		</div>
+  				<input type="text" class="searchBar">
+  				<p class="searchBarIn">
+  					<span class="mui-icon mui-icon-search searchBar-icon"></span>
+  					<span class="searchText">输入关键词/商品名称</span>
+  				</p>
+      	</div>
 			<p class="searchTitle">热门搜索</p>
 			<a href="###" class="hotsearch" v-for="obj in SearchArr">{{obj.p}}</a>
     	</form>
@@ -36,7 +36,7 @@
 	    <div class="content">
 		    <div class="pic clear">
 		    	<div class="fl">
-		    		<img src="img/homeLife.png" alt="">
+		    		<a href="login.html"><img src="img/homeLife.png" alt=""></a>
 		    	</div>
 		    	<div class="fr">
 			    	<img src="img/homeEat.png" alt="">
@@ -197,15 +197,15 @@
 	        
 	      </div>
 	      <div class="inner">
-	        <ul>
-	          <li class="first"><a href=""><img src="img/icon1.jpg"></a><a href="">基本资料</a><a href="" class="arrow">></a></li>
-	          <li><a href=""><img src="img/icon2.jpg"></a><a href="">我的订单</a><a href="" class="arrow">></a></li>
-	          <li><a href=""><img src="img/icon3.jpg"></a><a href="">我的收藏</a><a href="" class="arrow">></a></li>
-	          <li><a href=""><img src="img/icon4.jpg"></a><a href="">我的钱包</a><a href="" class="arrow">></a></li>
-	          <li><a href=""><img src="img/icon5.jpg"></a><a href="">收货地址</a><a href="" class="arrow">></a></li>
-	          <li><a href=""><img src="img/icon6.jpg"></a><a href="">升级会员</a><a href="" class="arrow">></a></li>
+	        <ul class="inner1">
+	          <li class="first"><img src="img/icon1.jpg">基本资料<a class="arrow">></a></li>
+	          <li><img src="img/icon2.jpg">我的订单<a class="arrow">></a></li>
+	          <li><img src="img/icon3.jpg">我的收藏</a><a class="arrow">></a></li>
+	          <li><img src="img/icon4.jpg">我的钱包<a class="arrow">></a></li>
+	          <li><img src="img/icon5.jpg">收货地址<a class="arrow">></a></li>
+	          <li><img src="img/icon6.jpg">升级会员<a class="arrow">></a></li>
 	        </ul>
-	        <ul>
+	        <ul  class="inner2">
 	              <li class="more"><a href=""><img src="img/icon7.jpg"></a><a href="">更多</a><a href="" class="arrow">></a></li>
 	              <li><a href=""><img src="img/icon7.jpg"></a><a href="">注销</a><a href="" class="arrow">></a></li>
 
@@ -527,6 +527,7 @@ var classifyli = document.querySelectorAll(".classifyli");
 			Cbol1 = true;
 			// console.log(1)
 		})
+
 
 /***********   底部table切换   ************/
 

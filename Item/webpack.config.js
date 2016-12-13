@@ -13,6 +13,7 @@ module.exports = {
         Appcon:path+"/Appcon/Appcon.js",
         zajin:path+"/zajin/zajin.js",
         cart:path+"/cart/cart.js",
+        show:path+"/show/show.js",
 	},
 	output:{
 		path:"./www",
@@ -99,9 +100,15 @@ module.exports = {
         template: './app/cart/index.html',
         chunks: ['common','cart']
     }),
+    new HtmlWebpackPlugin({
+        title: 'show',
+        filename: 'show.html',
+        template: './app/show/show.html',
+        chunks: ['common','show']
+    }),
     new webpack.ProvidePlugin({
      $: path+'/commons/jquery-3.0.0.min.js',
-    })//直接加载到全局不需要require()
+    }),//直接加载到全局不需要require()
 	]
 }
 // sudo cnpm install
