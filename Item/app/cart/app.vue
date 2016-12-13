@@ -98,9 +98,8 @@ export default {
         this.ABC();
         $(".heji span").eq(1).html("￥"+total)
         $(".jisuan span").eq(0).html("（"+len+"）")
-        console.log(this.truelen);
      },
-     truelen:0,
+     truelen:0,//记录勾选了多少个
      ABC:function(){     //全选按钮   
         if (this.truelen==this.arr.length) {
            $(".gouquan").eq(0).children()[0].src=require("./img/gou.png");
