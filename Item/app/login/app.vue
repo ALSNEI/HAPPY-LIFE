@@ -47,7 +47,7 @@ export default {
               if (data.error==0) {
                 location.href = "Appcon.html";//登录成功跳转  
               }else {
-                  alert("登录失败")
+                  alert("密码错误")
               }
            }
         })

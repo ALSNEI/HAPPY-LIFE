@@ -35,9 +35,8 @@ export default {
     		this.code+=aaa[i];
     	}
     	console.log(this.code);
-    	// e.target.style.letterSpacing="7px"; //改变字符的间隔
      //    e.target.value=this.code;//target 等同于获取调用者的this
-     $(".num2").css("letterSpacing","7px");
+     $(".num2").css("letterSpacing","7px");//改变字符的间隔
      $(".num2").val(this.code);
     },
   },
