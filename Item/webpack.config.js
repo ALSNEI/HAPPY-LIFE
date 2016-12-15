@@ -14,6 +14,8 @@ module.exports = {
         zajin:path+"/zajin/zajin.js",
         cart:path+"/cart/cart.js",
         show:path+"/show/show.js",
+        my:path+"/my/mine.js",
+        more:path+"/more/more.js"
 	},
 	output:{
 		path:"./www",
@@ -105,6 +107,18 @@ module.exports = {
         filename: 'show.html',
         template: './app/show/show.html',
         chunks: ['common','show']
+    }),
+    new HtmlWebpackPlugin({
+        title: '我的',
+        filename: 'my.html',
+        template: './app/my/mine.html',
+        chunks: ['common','my']
+    }),
+    new HtmlWebpackPlugin({
+        title: '更多',
+        filename: 'more.html',
+        template: './app/more/more.html',
+        chunks: ['common','more']
     }),
     new webpack.ProvidePlugin({
      $: path+'/commons/jquery-3.0.0.min.js',
