@@ -15,7 +15,8 @@ module.exports = {
         cart:path+"/cart/cart.js",
         show:path+"/show/show.js",
         my:path+"/my/mine.js",
-        more:path+"/more/more.js"
+        more:path+"/more/more.js",
+        vip:path+"/vip/vip.js"
 	},
 	output:{
 		path:"./www",
@@ -119,6 +120,12 @@ module.exports = {
         filename: 'more.html',
         template: './app/more/more.html',
         chunks: ['common','more']
+    }),
+    new HtmlWebpackPlugin({
+        title: '会员',
+        filename: 'vip.html',
+        template: './app/vip/vip.html',
+        chunks: ['common','vip']
     }),
     new webpack.ProvidePlugin({
      $: path+'/commons/jquery-3.0.0.min.js',

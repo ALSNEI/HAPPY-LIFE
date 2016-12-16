@@ -222,7 +222,8 @@ export default {
 */
 .app5{
   display: none;
-  animation: move 1s ease-in-out ;
+  -webkit-animation: move 1s ease-in-out ;
+  
 }
 .rap .empty{
   width: 7.5rem;
@@ -273,16 +274,20 @@ export default {
   float: right;
   color: #333333;
 }
-@keyframes move{
+@-webkit-keyframes move{
   0%{
     left:7.5rem;
-
   }
-
   100%{
     left: 0rem;
   }
-
 }
-
+@keyframes move{
+  0%{
+    left:7.5rem;
+  }
+  100%{
+    left: 0rem;
+  }
+}
 </style>
