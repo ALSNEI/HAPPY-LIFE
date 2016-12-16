@@ -120,7 +120,7 @@ export default {
 .app2{
 
   display: none;
-  animation: move 1s ease-in-out ;
+  -webkit-animation: move 1s ease-in-out ;
 }
 
 .rap{
@@ -142,7 +142,7 @@ export default {
 */
 .app3{
   display: none;
-  animation: move 1s ease-in-out ;
+  -webkit-animation: move 1s ease-in-out ;
 }
 .hip{
   width: 7.5rem;
@@ -206,7 +206,7 @@ export default {
 */
  .app4{
   display: none;
-  animation: move 1s ease-in-out ;
+  -webkit-animation: move 1s ease-in-out ;
  }
 .rap .fix{
   font-size: .28rem;
