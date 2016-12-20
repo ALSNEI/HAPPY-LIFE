@@ -11,7 +11,7 @@
 			<div class="btnsss">
 			<!-- mui-icon mui-icon-arrowleft -->
 				<a href=""><span id="back" class="mui-icon mui-icon-arrowleft"></span></a>
-				<a href=""><img id="share" src="img/share.png"></a>
+				<a ><img id="share" src="img/share.png" v-on:click="xian()"></a>
 				<a href=""><span id="collect" class="mui-icon mui-icon-star"></span></a>
 				
 			</div>
@@ -59,13 +59,22 @@
 			<button class="add">加入购物车</button>
 		</div>
 	</div><!-- wrap -->
+	<server ></server>
 </div>
 </template>
 
 
 <script>
+import Server from '../commons/server';
 export default {
-	
+	components: {
+	    Server
+	  },
+	 methods:{
+	 	xian:function (){
+	 		$(".share").fadeIn(200);
+	 	}
+	 },
 	ready:function(){
 		$(".pingjiali").eq(0).on("click",function(){
 			$(".pingjiauls").eq(0).css("display","block")
@@ -111,16 +120,17 @@ export default {
 .xiaoliang,.xianliang{ float: right; }
 .details .jiaqian{ font-size: .34rem; color: #ff3f12; margin-right: .25rem; }
 
-.pingjia{ width: 100%; /*height: 100vh;*/ background-color: white; }
+.pingjia{ width: 100%; height: .77rem; background-color: white; }
 .pingjia ul{ list-style: none; }
 .pingjia .pingjiaul{ height: .77rem; border-bottom: 3px solid #d9d9d9; position: relative;  }
 .pingjia ul .pingjiali{ width: calc(100vw / 2); height: .6rem; float: left; text-align: center;  }
 .pingjia ul .pingjiali p{ line-height: .74rem; font-size: .34rem; color: #595959; display: inline-block; }
 
-.select{ width: calc(100vw / 2); height: .05rem; background-image: url(img/select.png); background-size: 100% 100%; position: absolute; z-index: 4;top: 10.5rem; transition: all; }
+.select{ width: calc(100vw / 2); height: .05rem; background-image: url(img/select.png); background-size: 100% 100%; position: absolute; z-index: 4;bottom: 0; transition: all; }
 .pingjiali:nth-child(2) .pingjiauls{ display: none; }
 
-.pingjiauls{ width: 100vw; /*padding: 0 .2rem;*/ box-sizing: border-box; position: absolute; left: 0; background-color: #fff; text-align: left; border-bottom: 1px solid #d9d9d9; }
+.pingjiauls{ width: 100vw; box-sizing: border-box; position: absolute; left: 0; background-color: #fff; text-align: left; border-bottom: 1px solid #d9d9d9; }
+.pingjiali:nth-child(1) .pingjiauls .pingjialis{ font-size: .28rem; }
 .pingjialis:last-child{ padding-bottom: .98rem; }
 #time{ float: right; }
 #name{ color: #010101; }
@@ -129,7 +139,7 @@ export default {
 .pjp1 img{ height: 100%; }
 .pjp2{ font-size: .32rem; color: #000; margin: 0 .2rem; line-height: .44rem; margin-bottom: .1rem; }
 
-.shopping{ padding: .2rem; width: 100%; height: .98rem; background-color: #f2f2f2; position: fixed; bottom: 0; }
+.shopping{ padding: .2rem; width: 100%; height: .98rem; background-color: #f2f2f2; position: fixed; bottom: 0; z-index: 7; }
 .che{ width: .58rem; height: .55rem; background-image: url(img/shopping.png); background-size: 100% 100%; float: left; margin: .1rem; }
 .shopping button{ float: right; border-radius: .14rem; color: white; font-size: .3rem; }
 .add{ background-color: #ed9d2a; margin-right: .4rem; }

@@ -115,7 +115,7 @@ export default {
 			width: 100%;
 			height:.88rem;
 			border: none;
-			margin-top: .1rem;  
+			margin: .1rem auto 0rem;  
 		}
 		.conn hr{
 			margin: 0 auto;

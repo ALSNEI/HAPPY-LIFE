@@ -198,16 +198,16 @@
 	      </div>
 	      <div class="inner">
 	        <ul class="inner1">
-	          <li class="first"><img src="img/icon1.jpg">基本资料<a class="arrow">></a></li>
-	          <li><img src="img/icon2.jpg">我的订单<a class="arrow">></a></li>
-	          <li><img src="img/icon3.jpg">我的收藏</a><a class="arrow">></a></li>
-	          <li><img src="img/icon4.jpg">我的钱包<a class="arrow">></a></li>
-	          <li><img src="img/icon5.jpg">收货地址<a class="arrow">></a></li>
-	          <li><img src="img/icon6.jpg">升级会员<a class="arrow">></a></li>
+	          <li class="first"><a href="basics.html"><img src="img/icon1.jpg">基本资料<span class="arrow">></span></a></li>
+	          <li><a href="###"><img src="img/icon2.jpg">我的订单<span class="arrow">></span></a></li>
+	          <li><a href="###"><img src="img/icon3.jpg">我的收藏<span class="arrow">></span></a></li>
+	          <li><a href="###"><img src="img/icon4.jpg">我的钱包<span class="arrow">></span></a></li>
+	          <li><a href="###"><img src="img/icon5.jpg">收货地址<span class="arrow">></span></a></li>
+	          <li><a href="###"><img src="img/icon6.jpg">升级会员<span class="arrow">></span></a></li>
 	        </ul>
 	        <ul  class="inner2">
-	              <li class="more"><a href=""><img src="img/icon7.jpg"></a><a href="">更多</a><a href="" class="arrow">></a></li>
-	              <li><a href=""><img src="img/icon7.jpg"></a><a href="">注销</a><a href="" class="arrow">></a></li>
+	              <li class="more"><a href="###"><img src="img/icon7.jpg">更多<span class="arrow">></span></a></li>
+	              <li><a href="###"><img src="img/icon7.jpg">注销<span class="arrow">></span></a></li>
 
 	        </ul>
 	        
@@ -1024,6 +1024,8 @@ var classifyli = document.querySelectorAll(".classifyli");
 }
 #person .inner ul li a {
   color: black;
+  display: inline-block;
+  width: 100%;
 }
 #person .inner ul li .arrow {
   font-size: .32rem;

@@ -16,7 +16,12 @@ module.exports = {
         show:path+"/show/show.js",
         my:path+"/my/mine.js",
         more:path+"/more/more.js",
-        vip:path+"/vip/vip.js"
+        vip:path+"/vip/vip.js",
+        service:path+"/service/service.js",
+        basics:path+"/basics/basics.js",
+        merchant:path+"/merchant/merchant.js",
+        food:path+"/food/food.js",
+        Second:path+"/Second/Second.js"
 	},
 	output:{
 		path:"./www",
@@ -123,6 +128,54 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
         title: '会员',
+        filename: 'vip.html',
+        template: './app/vip/vip.html',
+        chunks: ['common','vip']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'service',
+        filename: 'service.html',
+        template: './app/service/service.html',
+        chunks: ['common','service']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'basics',
+        filename: 'basics.html',
+        template: './app/basics/basics.html',
+        chunks: ['common','basics']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'merchant',
+        filename: 'merchant.html',
+        template: './app/merchant/merchant.html',
+        chunks: ['common','merchant']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'food',
+        filename: 'food.html',
+        template: './app/food/food.html',
+        chunks: ['common','food']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'Second',
+        filename: 'Second.html',
+        template: './app/Second/Second.html',
+        chunks: ['common','Second']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'my',
+        filename: 'my.html',
+        template: './app/my/my.html',
+        chunks: ['common','my']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'more',
+        filename: 'more.html',
+        template: './app/more/more.html',
+        chunks: ['common','more']
+    }),
+    new HtmlWebpackPlugin({
+        title: 'vip',
         filename: 'vip.html',
         template: './app/vip/vip.html',
         chunks: ['common','vip']
